@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google One Tap Login</title>
+    <title>IT Inventory Management</title>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f4f4f9; }
@@ -20,14 +20,20 @@
         data-context="signin"
         data-ux_mode="popup"
         data-callback="handleCredentialResponse"
-        data-auto_prompt="true"> </div>
+        data-auto_prompt="false"> </div>
 
-    <div class="g_id_signin" data-type="standard"></div>
+    <div id="login-ui">
+        <div class="g_id_signin" data-type="standard"></div>
+    </div>
 
-    <div id="user-info">
-        <img id="user-pic" src="" alt="Profile Picture">
+    <div id="user-info" style="display: none; text-align: center;">
+        <img id="user-pic" src="" alt="Profile Picture" style="border-radius: 50%; width: 100px;">
         <h3 id="user-name"></h3>
         <p id="user-email"></p>
+        
+        <p id="redirect-msg" style="font-weight: bold;">
+            Success! Redirecting to dashboard in <span id="countdown">3</span> seconds...
+        </p>
     </div>
 
     <script>
@@ -43,17 +49,39 @@
         function handleCredentialResponse(response) {
             const responsePayload = decodeJwtResponse(response.credential);
 
-            console.log("ID: " + responsePayload.sub);
-            console.log('Full Name: ' + responsePayload.name);
-            console.log('Email: ' + responsePayload.email);
+            // Save to LocalStorage for the next page
+            localStorage.setItem('user_token', response.credential);
+            localStorage.setItem('user_email', responsePayload.email);
 
-            // Display the data on the page
+            document.getElementById('login-ui').style.display = 'none';
             document.getElementById('user-info').style.display = 'block';
+            
             document.getElementById('user-name').innerText = responsePayload.name;
             document.getElementById('user-email').innerText = responsePayload.email;
             document.getElementById('user-pic').src = responsePayload.picture;
-            
+
+            // Start the countdown
+            startRedirectCountdown();
         }
+
+        function startRedirectCountdown() {
+            let seconds = 3;
+            const countdownElement = document.getElementById('countdown');
+
+            const timer = setInterval(() => {
+                seconds--;
+                countdownElement.innerText = seconds;
+
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    window.location.href = "data.html";
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            google.accounts.id.prompt();
+        };
     </script>
 </body>
 </html>
