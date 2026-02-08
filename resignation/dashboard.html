@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- --- Styling --- -->
+    <link rel="stylesheet" href="../style/css/bootstrap.css">
+    <link rel="stylesheet" href="../style/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/css/bootstrap.rtl.css">
+    <link rel="stylesheet" href="../style/css/bootstrap.rtl.min.css">
+    <!-- chrome tab logo -->
+    <link rel="icon" type="image/png" href="../style/img/logo.png">
+
+
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .sidebar { min-height: 100vh; background-color: #212529; color: white; }
+        .sidebar .nav-link { color: rgba(255,255,255,0.7); transition: 0.3s; }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active { color: white; background: #343a40; border-radius: 5px; }
+        .card-stat { border: none; border-radius: 12px; transition: transform 0.2s; }
+        .card-stat:hover { transform: translateY(-5px); }
+        .status-badge { font-size: 0.8rem; padding: 0.4em 0.8em; }
+    </style>
+
+    <style>
+        .sidebar { min-height: 100vh; background-color: #212529; color: white; z-index: 100;}
+        .sidebar .nav-link { color: rgba(255,255,255,0.7); transition: 0.3s; padding: 12px 15px;}
+        .sidebar .nav-link:hover, .sidebar .nav-link.active { color: white; background: #343a40; border-radius: 8px;}
+
+        @media (max-width: 767.98px) {.sidebar { min-height: auto;padding-bottom: 20px;}}
+
+        .card-stat { border: none; border-radius: 12px; transition: transform 0.2s; }
+        .card-stat:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body>
+
+    <header class="navbar navbar-dark sticky-top bg-dark shadow d-md-none p-2">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a class="navbar-brand fs-6 m-0" href="#">
+                <i class="bi bi-cpu-fill text-primary me-2"></i>IT Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse p-3">
+            <div class="d-flex align-items-center mb-4 d-none d-md-flex">
+                <i class="bi bi-cpu-fill fs-3 me-2 text-primary"></i>
+                <h5 class="mb-0">IT Dashboard</h5>
+            </div>
+            
+            <ul class="nav flex-column gap-2">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" onclick="showSection('overview')">
+                        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showSection('stock')">
+                        <i class="bi bi-box-seam me-2"></i> IT Stock
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showSection('resignation')">
+                        <i class="bi bi-person-x me-2"></i> Resignations
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showSection('helpdesk')">
+                        <i class="bi bi-headset me-2"></i> Helpdesk
+                    </a>
+                </li>
+                <hr class="text-secondary">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-gear me-2"></i> Settings
+                    </a>
+                </li> -->
+            </ul>
+        </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2" id="pageTitle">Dashboard Overview</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="window.print()">
+                            <i class="bi bi-download"></i> Export Report
+                        </button>
+                    </div>
+                </div>
+
+                <div id="overviewSection">
+                    <div class="row g-4 mb-4">
+                        <div class="col-12 col-sm-6 col-xl-3">
+                            <div class="card card-stat bg-white shadow-sm p-3">
+                                <div class="text-muted small">Total IT Assets</div>
+                                <div class="h4 mb-0">1,240</div>
+                                <div class="text-success small"><i class="bi bi-arrow-up"></i> 12% increase</div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-xl-3">
+                            <div class="card card-stat bg-white shadow-sm p-3">
+                                <div class="text-muted small">Pending Resignations</div>
+                                <div class="h4 mb-0">8</div>
+                                <div class="text-danger small">Action required</div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-xl-3">
+                            <div class="card card-stat bg-white shadow-sm p-3">
+                                <div class="text-muted small">Low Stock Alerts</div>
+                                <div class="h4 mb-0">5</div>
+                                <div class="text-warning small">Reorder soon</div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-xl-3">
+                            <div class="card card-stat bg-white shadow-sm p-3">
+                                <div class="text-muted small">System Uptime</div>
+                                <div class="h4 mb-0">99.9%</div>
+                                <div class="text-primary small">All systems green</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm border-0">
+                        <div class="card-header bg-white py-3">
+                            <h6 class="mb-0">Recent Asset Allocations</h6>
+                        </div>
+                        <div class="table-responsive p-3">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>Asset Type</th>
+                                        <th>Serial No.</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Doe</td>
+                                        <td>MacBook Pro 14"</td>
+                                        <td>#APL-9923</td>
+                                        <td>Oct 24, 2023</td>
+                                        <td><span class="badge bg-success status-badge">Assigned</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sarah Smith</td>
+                                        <td>Dell Monitor 27"</td>
+                                        <td>#DEL-4410</td>
+                                        <td>Oct 23, 2023</td>
+                                        <td><span class="badge bg-warning text-dark status-badge">Pending</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="stockSection" class="d-none">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <h4 class="mb-4">Stock Inventory</h4>
+
+                            <div class="container-fluid px-4 px-md-5 px-lg-5">
+    
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-center gx-3 gy-4 mb-4">
+                                    <div class="col" style="max-width: 350px;"> 
+                                        <div class="card h-100 shadow-sm border-1">
+                                            <div class="text-center p-5">
+                                                <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
+                                            </div>
+                                            <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
+                                                    Total: 15
+                                                    <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
+                                                </h6>
+                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
+                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
+                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col" style="max-width: 350px;"> 
+                                        <div class="card h-100 shadow-sm border-1">
+                                            <div class="text-center p-5">
+                                                <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
+                                            </div>
+                                            <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
+                                                    Total: 15
+                                                    <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
+                                                </h6>
+                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
+                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
+                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col" style="max-width: 350px;"> 
+                                        <div class="card h-100 shadow-sm border-1">
+                                            <div class="text-center p-5">
+                                                <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
+                                            </div>
+                                            <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
+                                                    Total: 15
+                                                    <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
+                                                </h6>
+                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
+                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
+                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-center gx-3 gy-4 mb-4">
+                                    <div class="col" style="max-width: 350px;"> 
+                                        <div class="card h-100 shadow-sm border-1">
+                                            <div class="text-center p-5">
+                                                <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
+                                            </div>
+                                            <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
+                                                    Total: 15
+                                                    <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
+                                                </h6>
+                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
+                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
+                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col" style="max-width: 350px;"> 
+                                        <div class="card h-100 shadow-sm border-1">
+                                            <div class="text-center p-5">
+                                                <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
+                                            </div>
+                                            <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
+                                                    Total: 15
+                                                    <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
+                                                </h6>
+                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
+                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
+                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col" style="max-width: 350px;"> 
+                                        <div class="card h-100 shadow-sm border-1">
+                                            <div class="text-center p-5">
+                                                <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
+                                            </div>
+                                            <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
+                                                    Total: 15
+                                                    <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
+                                                </h6>
+                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
+                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
+                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="resignationSection" class="d-none">
+                    <div class="card shadow-sm border-0 text-center py-4">
+                        <i class="bi bi-person-x fs-1 text-muted"></i>
+                        <h4>Employee Resignation Tracking</h4>
+                        <p class="text-muted">Track hardware return status for departing employees.</p>
+
+                        
+                        <div class="m-4 row justify-content-center">
+                            <div class="col-10 col-md-6">
+                                <form class="d-flex" role="search" action="https://www.google.com/search" method="GET" target="_blank">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="px-3"> <table class="table table-hover" id="resignationTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Asset Return</th>
+                                        <th>Final Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resignationBody">
+                                    <tr><td>1</td><td>Mark</td><td>Otto</td><td>Laptop</td><td>2024-02-10</td><td><span class="badge bg-warning">Pending</span></td></tr>
+                                    <tr><td>2</td><td>Jacob</td><td>Thornton</td><td>Phone</td><td>2024-02-12</td><td><span class="badge bg-success">Returned</span></td></tr>
+                                    <tr><td>3</td><td>John</td><td>Doe</td><td>Monitor</td><td>2024-02-15</td><td><span class="badge bg-danger">Overdue</span></td></tr>
+                                    <tr><td>1</td><td>Mark</td><td>Otto</td><td>Laptop</td><td>2024-02-10</td><td><span class="badge bg-warning">Pending</span></td></tr>
+                                    <tr><td>2</td><td>Jacob</td><td>Thornton</td><td>Phone</td><td>2024-02-12</td><td><span class="badge bg-success">Returned</span></td></tr>
+                                    <tr><td>3</td><td>John</td><td>Doe</td><td>Monitor</td><td>2024-02-15</td><td><span class="badge bg-danger">Overdue</span></td></tr>
+                                    <tr><td>1</td><td>Mark</td><td>Otto</td><td>Laptop</td><td>2024-02-10</td><td><span class="badge bg-warning">Pending</span></td></tr>
+                                    <tr><td>2</td><td>Jacob</td><td>Thornton</td><td>Phone</td><td>2024-02-12</td><td><span class="badge bg-success">Returned</span></td></tr>
+                                    <tr><td>3</td><td>John</td><td>Doe</td><td>Monitor</td><td>2024-02-15</td><td><span class="badge bg-danger">Overdue</span></td></tr>
+                                    <tr><td>1</td><td>Mark</td><td>Otto</td><td>Laptop</td><td>2024-02-10</td><td><span class="badge bg-warning">Pending</span></td></tr>
+                                    <tr><td>2</td><td>Jacob</td><td>Thornton</td><td>Phone</td><td>2024-02-12</td><td><span class="badge bg-success">Returned</span></td></tr>
+                                    <tr><td>3</td><td>John</td><td>Doe</td><td>Monitor</td><td>2024-02-15</td><td><span class="badge bg-danger">Overdue</span></td></tr>
+                                    </tbody>
+                            </table>
+
+                            <nav>
+                                <ul class="pagination pagination-sm justify-content-center" id="paginationControls">
+                                    </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="helpdeskSection" class="d-none">
+                    <div class="card shadow-sm border-0 text-center py-5">
+                        <i class="bi bi-person-x fs-1 text-muted"></i>
+                        <h4>Helpdesk Support</h4>
+                        <p>Manage and track IT support tickets.</p>
+                        <div class="mt-4 row justify-content-center">
+                            <div class="col-10 col-md-6">
+                                <form class="d-flex" role="search" action="https://www.google.com/search" method="GET" target="_blank">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+<script src="../style/js/bootstrap.bundle.js"></script>
+<script src="../style/js/bootstrap.bundle.min.js"></script>
+<script src="../style/js/bootstrap.js"></script>
+<script src="../style/js/bootstrap.min.js"></script>
+
+<script>    
+    function showSection(section) {
+        // Hide all sections
+        document.getElementById('overviewSection').classList.add('d-none');
+        document.getElementById('stockSection').classList.add('d-none');
+        document.getElementById('resignationSection').classList.add('d-none');
+        document.getElementById('helpdeskSection').classList.add('d-none');
+        
+        // Show selected section
+        document.getElementById(section + 'Section').classList.remove('d-none');
+        
+        // Update Title
+        const titles = {
+            'overview': 'Dashboard Overview',
+            'stock': 'IT Stock Management',
+            'resignation': 'Employee Resignation Records',
+            'helpdesk': 'Helpdesk Support'
+        };
+        document.getElementById('pageTitle').innerText = titles[section];
+
+        // Update active link styling
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const bsCollapse = bootstrap.Collapse.getInstance(sidebarMenu);
+        if (bsCollapse) {
+            bsCollapse.hide();
+        }
+    }
+
+    //pagination
+    const rowsPerPage = 5;
+
+    function setupPagination(tableId, bodyId, paginationId) {
+        const tableBody = document.getElementById(bodyId);
+        if (!tableBody) return; // Safety check
+
+        const rows = tableBody.getElementsByTagName('tr');
+        const paginationControls = document.getElementById(paginationId);
+        const pageCount = Math.ceil(rows.length / rowsPerPage);
+
+        function displayPage(page) {
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].style.display = (i >= start && i < end) ? '' : 'none';
+            }
+        }
+
+        // Create Pagination Buttons
+        paginationControls.innerHTML = "";
+        for (let i = 1; i <= pageCount; i++) {
+            const li = document.createElement('li');
+            li.className = 'page-item';
+            li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+            li.onclick = (e) => {
+                e.preventDefault();
+                displayPage(i);
+                document.querySelectorAll(`#${paginationId} .page-item`).forEach(el => el.classList.remove('active'));
+                li.classList.add('active');
+            };
+            paginationControls.appendChild(li);
+        }
+
+        // Show first page by default
+        if (rows.length > 0) {
+            displayPage(1);
+            if (paginationControls.firstChild) paginationControls.firstChild.classList.add('active');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setupPagination('resignationTable', 'resignationBody', 'paginationControls');
+    });
+</script>
+
+</body>
+</html>
