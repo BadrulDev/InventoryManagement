@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="../style/css/bootstrap.rtl.min.css">
     <!-- chrome tab logo -->
     <link rel="icon" type="image/png" href="../style/img/logo.png">
+    <!-- sweet alert -->
+    <link rel="stylesheet" href="../package/dist/sweetalert2.all.js">
+    <link rel="stylesheet" href="../package/dist/sweetalert2.js">
+    <link rel="stylesheet" href="../package/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../package/dist/sweetalert2.css">
 
 
 
@@ -58,6 +63,12 @@
             
             <ul class="nav flex-column gap-2">
                 <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-gear me-2"></i> Welcome,  @user
+                    </a>
+                </li>
+                <hr class="text-secondary">
+                <li class="nav-item">
                     <a class="nav-link active" href="#" onclick="showSection('overview')">
                         <i class="bi bi-speedometer2 me-2"></i> Dashboard
                     </a>
@@ -77,14 +88,8 @@
                         <i class="bi bi-headset me-2"></i> Helpdesk
                     </a>
                 </li>
-                <hr class="text-secondary">
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-gear me-2"></i> Settings
-                    </a>
-                </li> -->
             </ul>
-        </nav>
+            </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -102,12 +107,12 @@
                             <div class="card card-stat bg-white shadow-sm p-3">
                                 <div class="text-muted small">Total IT Assets</div>
                                 <div class="h4 mb-0">1,240</div>
-                                <div class="text-success small"><i class="bi bi-arrow-up"></i> 12% increase</div>
+                                <div class="text-success small"><i class="bi bi-arrow-up"></i> 12% increase since last year</div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="card card-stat bg-white shadow-sm p-3">
-                                <div class="text-muted small">Pending Resignations</div>
+                                <div class="text-muted small">Pending Actions</div>
                                 <div class="h4 mb-0">8</div>
                                 <div class="text-danger small">Action required</div>
                             </div>
@@ -130,33 +135,46 @@
 
                     <div class="card shadow-sm border-0">
                         <div class="card-header bg-white py-3">
-                            <h6 class="mb-0">Recent Asset Allocations</h6>
+                            <h6 class="mb-0">Recent Transaction History</h6>
                         </div>
                         <div class="table-responsive p-3">
                             <table class="table align-middle">
                                 <thead>
                                     <tr>
-                                        <th>Employee</th>
+                                        <th>Employee Name</th>
                                         <th>Asset Type</th>
                                         <th>Serial No.</th>
                                         <th>Date</th>
-                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>John Doe</td>
-                                        <td>MacBook Pro 14"</td>
-                                        <td>#APL-9923</td>
-                                        <td>Oct 24, 2023</td>
-                                        <td><span class="badge bg-success status-badge">Assigned</span></td>
+                                        <td>Thameshraman</td>
+                                        <td>HP Prodesk Mini PC Gen 2</td>
+                                        <td>WPEND0089142</td>
+                                        <td>24/1/2026</td>
+                                        <td>
+                                            <!-- <span class="badge bg-success status-badge">Assigned</span> -->
+                                            <a href="https://www.google.com" class="btn btn-outline-primary" role="button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+                                                </svg>
+                                            </a>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Sarah Smith</td>
-                                        <td>Dell Monitor 27"</td>
-                                        <td>#DEL-4410</td>
-                                        <td>Oct 23, 2023</td>
-                                        <td><span class="badge bg-warning text-dark status-badge">Pending</span></td>
+                                        <td>Norazim Omar</td>
+                                        <td>HP ProBook 440 G11</td>
+                                        <td>WPENL0073648</td>
+                                        <td>2/9/2026</td>
+                                        <td>
+                                            <a href="https://www.google.com" class="btn btn-outline-secondary" role="button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+                                                </svg>
+                                            </a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -168,6 +186,11 @@
                     <div class="card shadow-sm border-0">
                         <div class="card-body">
                             <h4 class="mb-4">Stock Inventory</h4>
+                                
+                            <div class="d-flex flex-row-reverse gap-4 mt-auto p-4">
+                                <button type="#" class="btn btn-sm btn-secondary">Deploy</button>
+                                <button type="#" class="btn btn-sm btn-info text-white"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add</button>
+                            </div>
 
                             <div class="container-fluid px-4 px-md-5 px-lg-5">
     
@@ -178,14 +201,11 @@
                                                 <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
                                             </div>
                                             <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h4>Mouse</h5><hr>
                                                 <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
                                                     Total: 15
                                                     <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
                                                 </h6>
-                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
-                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
-                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -195,14 +215,11 @@
                                                 <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
                                             </div>
                                             <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h4>Mouse</h5><hr>
                                                 <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
                                                     Total: 15
                                                     <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
                                                 </h6>
-                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
-                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
-                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -212,14 +229,11 @@
                                                 <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
                                             </div>
                                             <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h4>Mouse</h5><hr>
                                                 <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
                                                     Total: 15
                                                     <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
                                                 </h6>
-                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
-                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
-                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -231,14 +245,11 @@
                                                 <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
                                             </div>
                                             <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h4>Mouse</h5><hr>
                                                 <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
                                                     Total: 15
                                                     <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
                                                 </h6>
-                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
-                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
-                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -248,14 +259,11 @@
                                                 <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
                                             </div>
                                             <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h4>Mouse</h5><hr>
                                                 <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
                                                     Total: 15
                                                     <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
                                                 </h6>
-                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
-                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
-                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -265,14 +273,11 @@
                                                 <img src="../style/img/logo.png"  class="img-fluid" style="max-height: 80px; width: auto; object-fit: contain;"  alt="Asset">
                                             </div>
                                             <div class="card-body text-center d-flex flex-column pt-4">
+                                                <h4>Mouse</h5><hr>
                                                 <h6 class="card-title d-flex align-items-center justify-content-center fw-bold">
                                                     Total: 15
                                                     <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.7em;">Low</span>
                                                 </h6>
-                                                <div class="d-flex justify-content-center gap-4 mt-auto pt-4">
-                                                    <a href="#" class="btn btn-sm btn-info text-white w-100">Add</a>
-                                                    <a href="#" class="btn btn-sm btn-secondary w-100">Deploy</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -349,6 +354,45 @@
                     </div>
                 </div>
 
+
+                
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Item</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <fieldset>
+                                        <legend>Title</legend>
+                                            <div class="mb-3">
+                                                <label for="TextInput" class="form-label">PO Number</label>
+                                                <input type="text" id="TextInput" class="form-control" placeholder="Enter PO number">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="quantity" class="form-label">Quantity</label>
+                                                <input type="number" id="quantity" class="form-control" placeholder="Enter quantity">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category" class="form-label">Select Category</label>
+                                                <select id="category" class="form-select">
+                                                    <option>category 1</option>
+                                                </select>
+                                            </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="addToInventory">Add to Inventory</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </main>
         </div>
     </div>
@@ -357,6 +401,8 @@
 <script src="../style/js/bootstrap.bundle.min.js"></script>
 <script src="../style/js/bootstrap.js"></script>
 <script src="../style/js/bootstrap.min.js"></script>
+
+<script src="../package/dist/sweetalert2.all.min.js"></script>
 
 <script>    
     function showSection(section) {
@@ -434,6 +480,21 @@
     document.addEventListener('DOMContentLoaded', () => {
         setupPagination('resignationTable', 'resignationBody', 'paginationControls');
     });
+
+    //Sweet Alert for Add to Inventory
+    document.getElementById('addToInventory').addEventListener('click', function() {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            width: '200px',
+            height: '100px',
+            title: "Saved",
+            padding: '1em',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    });
+    //End of Sweet Alert
 </script>
 
 </body>
